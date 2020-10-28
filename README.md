@@ -4,17 +4,29 @@ This is a quick-start template for creating a Tauri app using Sveltejs and Mater
 
 This template includes a basic command event loop between front end (Svelte) and back end (Rust).
 
-## Pre-requisites
-Go to https://tauri.studio and set up Tauri for your operating system. Also install `yarn` if you want to follow the instructions here verbatim.
+## Prerequisites
+* [Tauri](https://tauri.studio/en/docs/getting-started/intro)
+* [Yarn](https://classic.yarnpkg.com/en/docs/install) or npm
 
 ## Development
 
-Install the dependencies and start your Svelte development server:
+Install the dependencies
+```bash 
+yarn
+# OR
+npm install
+```
+
+Start your Svelte development server:
 ```bash
-yarn && yarn dev
+yarn dev
+# OR
+npm run dev
 ```
 
 In another console, start the Tauri development environment:
 ```bash
 yarn tauri dev
+# OR
+npm run tauri dev
 ```
