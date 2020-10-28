@@ -43,9 +43,9 @@
 		},
 		"window": {
 			"title": "tauri-svelte-material",
-			"width": 350,
+			"width": 800,
 			"height": 600,
-			"resizable": false,
+			"resizable": true,
 			"fullscreen": false
 		},
 		"security": {

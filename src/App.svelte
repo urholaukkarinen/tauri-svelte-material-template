@@ -1,9 +1,7 @@
 <script>
-    import TextList from './TextList.svelte'
-    import AddTextButton from './AddTextButton.svelte'
+    import HelloWorld from './HelloWorld.svelte'
 </script>
 
 <main>
-    <AddTextButton/>
-    <TextList/>
+    <HelloWorld/>
 </main>

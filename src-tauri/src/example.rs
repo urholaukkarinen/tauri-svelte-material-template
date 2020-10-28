@@ -1,56 +1,44 @@
-use std::cell::RefCell;
-
 use tauri::{plugin::Plugin, Webview};
+use crate::cmd::Cmd::Hello;
 
-pub(crate) struct ExamplePlugin {
-    texts: RefCell<Vec<String>>
-}
+pub(crate) struct ExamplePlugin;
 
 impl ExamplePlugin {
     pub fn new() -> Self {
-        Self {
-            texts: RefCell::new(vec![])
-        }
-    }
-    
-    fn add_text(&self, text: String) {
-        println!("Adding text: {}", text);
-        self.texts.borrow_mut().push(text);
+        Self {}
     }
 
-    fn send_texts_to_webview(&self, webview: &mut Webview) {
-        let texts = self.texts.to_owned();
-        println!("Sending texts to webview: {:?}", texts.borrow());
+    fn say_hello_to_webview(&self, webview: &mut Webview, name: &str) {
         let mut webview = webview.as_mut();
-        tauri::event::emit(&mut webview, "texts".to_string(),
-            Some(texts)).expect("failed to emit");
+        tauri::event::emit(&mut webview, "hello_from_rust".to_string(),
+            Some(format!("Hello {}", name))).expect("failed to emit");
     }
 }
 
 impl Plugin for ExamplePlugin {
     /// Callback invoked when the webview is created.
-    fn created(&self, webview: &mut Webview) {
+    fn created(&self, _webview: &mut Webview) {
         
     }
 
     /// Callback invoked when the webview is ready.
-    fn ready(&self, webview: &mut Webview) {
-        self.send_texts_to_webview(webview);
+    fn ready(&self, _webview: &mut Webview) {
+
     }
     
     fn extend_api(&self, webview: &mut Webview, payload: &str) -> Result<bool, String> {
         match serde_json::from_str(payload) {
-            Err(e) => {
-                Err(e.to_string())
-            }
             Ok(command) => {
                 match command {
-                    crate::cmd::Cmd::AddText { text } => {
-                        self.add_text(text);
-                        self.send_texts_to_webview(webview);
+                    Hello { name } => {
+                        println!("{} said hello!", name);
+                        self.say_hello_to_webview(webview, &name);
                     }
                 }
                 Ok(true)
+            },
+            Err(e) => {
+                Err(e.to_string())
             }
         }
     }
