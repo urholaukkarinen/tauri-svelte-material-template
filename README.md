@@ -1,13 +1,11 @@
-# Tauri + Svelte + Material App Template
+# [Tauri](https://github.com/tauri-apps/tauri) + [Svelte](https://github.com/sveltejs/svelte) + [Material UI](https://github.com/hperrin/svelte-material-ui) Template
 
-This is a quick-start template for creating a Tauri app using Sveltejs and Material UI, based on
-the Tauri Svelte template at https://github.com/happybeing/tauri-svelte-template.
+This is a quick-start template for creating a Tauri app using Sveltejs and Material UI, based on the Tauri Svelte template at https://github.com/happybeing/tauri-svelte-template.
 
 This template includes a basic command event loop between front end (Svelte) and back end (Rust).
 
 ## Pre-requisites
-Go to https://tauri.studio and set up Tauri for your operating system. Also
-install `yarn` if you want to follow the instructions here verbatim.
+Go to https://tauri.studio and set up Tauri for your operating system. Also install `yarn` if you want to follow the instructions here verbatim.
 
 ## Development
 
